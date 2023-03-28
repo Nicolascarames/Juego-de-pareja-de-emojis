@@ -1,57 +1,38 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Juego parejas</title>
-    <!-- favicon -->
-
-    <!-- favicon -->
-    <link rel="stylesheet" href="./css/paneles.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="js.js"></script>
+    <title>Emoji Card Game</title>
   </head>
-  <body>
-    <header></header>
-    <section class="panel start hidden">
-      <h1 class="titulo__principal">Parejas de emojis</h1>
+  <body onload="Start()">
+    <main>
+      <header>
+        <article class="fxcntcnt"> <h1 style="color:orange">The Emoji Card Game</h1></article>
+        <article ><p id="puntos">Puntos : 0</p> <p id="intentos">Intentos : 0/5 </p></article>
+      </header>
+      <div class="modalgameover">Game Over</div>
+      <div class="modal">
+        <h1>Em😁ji Card Game</h1>
+        <p class="fxcntcnt padding20">
+          Haz Click en la cartas para ver su contenido,<br />
+          si las dos cartas son iguales, ganas puntos. <br />
+          El objectivo es emparejar todas las cartas. <br />
+          Cuidado! <br />
+          Solo tendrás 5 intento fallidos a disposiciíon.
+        </p>
+        <button class="btnyellow" onclick="OpenCloseMod()">START</button>
+      </div>
+      <section>
+        <article class="container fxcntcnt">
+        
+        </article>
+      </section>
 
-      <button class="cta btn__principal">Start</button>
-    </section>
-    <section class="panel center hidden">
-      <h2 class="titulo__center">Busca parejas de emojis</h2>
-      <ul class="box__juego">
-        <!-- <li class="card">
-                    <div class="content">
-                        <div class="front">❔</div>
-                        <div class="back">👻</div>
-                    </div>
-                </li> -->
-      </ul>
-      <form class="form__principal" name="form__principal">
-        <input
-          type="text"
-          name="userName"
-          id="user"
-          class="input__user__principal"
-          placeholder="Ingresa tu nombre"
-        />
-        <button class="btn__nombre" type="submit">
-          Guarda tu nombre y puntuacion
-        </button>
-      </form>
-      <span class="span__center"></span>
-      <button class="cta btn__center">Tabla puntuaciones</button>
-    </section>
-    <section class="panel end hidden">
-      <h3 class="titulo__end">Mejores puntuaciones</h3>
-      <article class="box__puntuaciones">
-        <ul class="ul__puntuaciones"></ul>
-      </article>
-      <p></p>
-      <button class="cta btn__final">Sigue intentando !</button>
-    </section>
-    <script src="./js/paneles.js"></script>
-    <script src="./js/state.js"></script>
-    <script src="./js/main.js"></script>
+      <footer></footer>
+    </main>
   </body>
 </html>

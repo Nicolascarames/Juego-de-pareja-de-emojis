@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nabla&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.fontoswald {
+  font-family: "Oswald", sans-serif;
+}
+.fxcntcnt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fxcolcntcnt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.padding20 {
+  padding: 20px;
+}
+header {
+  height: 150px;
+  font-family: "Oswald", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+}
+header article:nth-child(1){
+    display: flex;
+    width: 100%;
+    height: 50%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+header article:nth-child(2){
+    display: flex;
+    width: 100%;
+    height: 50%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.modal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.897);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Oswald", sans-serif;
+  display: flex;
+  z-index: 1000;
+}
+.modal p {
+  width: 100%;
+  height: 300px;
+
+  text-align: center;
+}
+.modal h1 {
+  font-weight: 400;
+  font-family: "Nabla", cursive;
+}
+.modalbutton {
+  border: 0;
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-weight: 900;
+  border-radius: 10px;
+}
+.btnyellow {
+  width: 140px;
+  height: 40px;
+  background-color: rgb(252, 182, 53);
+  color: white;
+  font-family: "Oswald", sans-serif;
+  border: 2px solid rgb(175, 115, 4);
+  filter: brightness(80%);
+  transition: all 1s;
+}
+.btnyellow:hover {
+  filter: brightness(100%);
+}
+.container {
+  width: 100%;
+  border: 1px solid black;
+  min-height: 600px;
+  margin-top: 50px;
+  perspective: 600px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.card {
+  width: 100px;
+  height: 140px;
+  border: 1px solid rgb(105, 101, 101);
+  transform: rotateY(180deg);
+  transition: all 0.5s;
+  transform-style: preserve-3d;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  background-image: url('./media/cardframemod.png');
+  background-position: center;
+  background-size: cover;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 35px;
+  margin: 5px;
+  z-index: 100;
+  user-select: none;
+  opacity: 1;
+  
+}
+.card:hover{
+  transform: scale(1) rotateY(180deg) translateZ(50px);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 75px;
+}
+.card p{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    font-size: 30px;
+    filter: grayscale(80%);
+    z-index: -10;
+
+}
+.front {
+  width: 100%;
+  height: 100%;
+  border: 3px solid orange;
+  position: absolute;
+  backface-visibility: hidden;
+  background-color: rgb(220, 235, 229);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  border-radius: 10px;
+}
+.modalgameover{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.897);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Oswald", sans-serif;
+    display: none;
+    z-index: 1000;
+    font-size: 40px;
+
+}
+
