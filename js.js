@@ -91,3 +91,13 @@ const Start = () =>{
     }
   
 }
+const ReStart = () =>{
+  console.log('restart')
+  document.querySelector('.container').textContent = '';
+  intentos = 0;
+  puntos= 0;
+  document.getElementById('intentos').textContent = `Intentos : ${intentos}/5`;
+  document.getElementById('puntos').textContent = `Puntos : ${puntos}`
+  Start();
+  document.querySelector('.modalgameover').style.display = 'none'
+}
