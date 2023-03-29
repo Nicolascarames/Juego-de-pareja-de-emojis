@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script src="js.js" type="module"></script>
+    <script src="./state.js" type="module"></script>
 
     <title>Emoji Card Game</title>
   </head>
@@ -17,7 +19,8 @@
         </article>
         <article>
           <p id="puntos">Puntos : 0</p>
-          <p id="intentos">Intentos : 0/5</p>
+          <p id="intentos">Intentos : 0</p>
+          <p id="tiempo">Tiempo : 0</p>
         </article>
       </header>
       <div class="modalgameover">
@@ -48,7 +51,8 @@
 
           <!-- modificar onclick para no sacar modal si nombre no valido -->
 
-          <button type="submit" class="btnyellow">START</button>
+          <button type="submit" class="btnyellow" >MODO NORMAL</button>
+          <button  class="btnred" >MODO DIFÍCIL 🥵</button>
           <!-- <button  class="btnyellow" onclick="OpenCloseMod()">START</button> -->
         </form>
       </div>
@@ -58,7 +62,6 @@
 
       <footer>Credits:</footer>
     </main>
-    <script src="js.js" type="module"></script>
-    <script src="./state.js" type="module"></script>
+    
   </body>
 </html>

@@ -22,12 +22,40 @@ let cont = 0;
 let first;
 let intentos = 0;
 let puntos = 0;
+let hardmode = false;
+let time = 0;
+let timer 
+let finish=0;
+let extraPuntos=200;
+const HardMode = () => {
+  hardmode = true;
+}
+
+
+const TimerOnOff = (boolean) =>{
+if(!boolean){
+  clearInterval(timer)
+  timer = 0;
+  console.log('if timer')
+}else{
+ timer = setInterval(() => {  time++; document.getElementById('tiempo').textContent = `${time}s`}, 1000);
+}
+}
+const GameFinished = () =>{
+  if(finish === 8){
+    TimerOnOff(false);
+    document.querySelector(".modalgameover").style.display = "flex";
+    addPuntos(puntos);
+    render();
+  }
+}
 const OpenCloseMod = () => {
   document.querySelector(".modal").style.display = "none";
 };
 const HandleClick = (e) => {
+ 
   cont++;
-  console.log(cont);
+  
   if (cont === 1) {
     first = e.target.id;
     document.getElementById(`${e.target.id}`).style.transform = "rotateX(0)";
@@ -50,17 +78,19 @@ const HandleClick = (e) => {
       puntos = puntos + 50;
       document.getElementById("puntos").textContent = `Puntos : ${puntos}`;
       cont = 0;
+      finish++;
+      GameFinished();
     } else {
       console.log("no iguales!");
       intentos++;
-      if (intentos === 10) {
+      if (intentos === 7 && hardmode) {
         document.querySelector(".modalgameover").style.display = "flex";
-        addPuntos(puntos);
+        addPuntos(puntos+extraPuntos-time);
         render();
       } else {
         document.getElementById(
           "intentos"
-        ).textContent = `Intentos : ${intentos}/5`;
+        ).textContent = `Intentos : ${intentos}${hardmode ? '/ 7' : ''}`;
       }
       //   intentos === 1
       //     ? (document.querySelector(".modalgameover").style.display = "flex")
@@ -88,8 +118,8 @@ const HandleClick = (e) => {
 const Start = () => {
   const copia = [...caritas];
   for (let i = 0; i < caritas.length; i++) {
+
     const random = Math.floor(Math.random() * (copia.length - 0) + 0);
-    const Carita = document.createElement("p");
     const Card = document.createElement("div");
     const Front = document.createElement("div");
     Front.className = "front";
@@ -97,10 +127,19 @@ const Start = () => {
     Card.className = "card";
     Card.id = copia[random].id;
     Card.append(Front);
-    document.querySelector(".container").append(Card);
+
+    setTimeout(() => {
+      document.querySelector(".container").append(Card);
+    }, 100 * i);
     Card.addEventListener("click", HandleClick);
     copia.splice(random, 1);
+  
+   
   }
+  setTimeout(() => {
+    TimerOnOff(true)
+  }, 2000);
+  
 };
 const ReStart = () => {
   console.log("restart");
@@ -109,6 +148,7 @@ const ReStart = () => {
   puntos = 0;
   document.getElementById("intentos").textContent = `Intentos : ${intentos}/5`;
   document.getElementById("puntos").textContent = `Puntos : ${puntos}`;
+  time=0;
   Start();
   document.querySelector(".modalgameover").style.display = "none";
 };
@@ -119,4 +159,6 @@ const btnRestartElement = document.querySelector(".btn__restart");
 
 btnRestartElement.addEventListener("click", ReStart);
 
+const BtnHard = document.querySelector('.btnred')
+BtnHard.addEventListener('click', HardMode)
 export { ReStart, Start, HandleClick, OpenCloseMod };
