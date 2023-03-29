@@ -1,5 +1,7 @@
 "use strict";
 
+import { ReStart, Start, HandleClick, OpenCloseMod } from "./js.js";
+
 const localStorageState = window.localStorage.getItem("storage");
 
 const state = {
@@ -12,17 +14,6 @@ const saveState = () => {
   window.localStorage.setItem("storage", jsonState);
 };
 
-//añade un usuario
-const addUser = (usuarioNombre) => {
-  const datoUsuario = {
-    nombre: usuarioNombre,
-    puntuacion: 0,
-    puntuacionTotal: 0,
-  };
-  state.usuarios.push(datoUsuario);
-  saveState();
-};
-
 const ulPuntuacionesElement = document.querySelector(".ul__puntuaciones");
 
 const render = () => {
@@ -31,13 +22,13 @@ const render = () => {
     const liElement = document.createElement("li");
     const h7Element = document.createElement("h7");
     const span1Element = document.createElement("span");
-    const span2Element = document.createElement("span");
+
     liElement.append(h7Element);
     liElement.append(span1Element);
-    liElement.append(span2Element);
+
     h7Element.textContent = usuario.nombre;
     span1Element.textContent = usuario.puntuacion;
-    span2Element.textContent = usuario.puntuacionTotal;
+
     fragmentUsuarios.prepend(liElement);
   }
   //limpio tabla puntuaciones
@@ -46,15 +37,32 @@ const render = () => {
   ulPuntuacionesElement.append(fragmentUsuarios);
 };
 
+//añade un usuario
+const addUser = (usuarioNombre) => {
+  const nombreUsuario = usuarioNombre;
+  return nombreUsuario;
+  // const datoUsuario = {
+  //   nombre: usuarioNombre,
+  //   puntuacion: 0,
+  // };
+  // state.usuarios.push(datoUsuario);
+  // saveState();
+};
+
 const formPrincipalElement = document.forms.form__principal;
+
+let nombreUsuario;
 
 const funcionSubmit = (evento) => {
   evento.preventDefault();
   const inputUsuarioElement = formPrincipalElement.elements.userName;
   const nombreUsuarioElement = inputUsuarioElement.value.trim();
   if (nombreUsuarioElement !== "") {
-    addUser(nombreUsuarioElement);
-    render();
+    nombreUsuario = addUser(nombreUsuarioElement);
+    // render();
+    Start();
+    OpenCloseMod();
+    return nombreUsuario;
   } else {
     alert("Nombre no valido");
   }
@@ -64,6 +72,33 @@ const funcionSubmit = (evento) => {
 
 formPrincipalElement.addEventListener("submit", funcionSubmit);
 
-render();
+//añade la puntuacion
 
-// event.stopPropagation();
+const addPuntos = (puntosUsuario) => {
+  const datoUsuario = {
+    nombre: nombreUsuario,
+    puntuacion: puntosUsuario,
+  };
+  state.usuarios.push(datoUsuario);
+  saveState();
+};
+
+// const funcionUltima = (evento) => {
+//   evento.preventDefault();
+//   addPuntos(puntosUsuario);
+//   render();
+// };
+
+//recarga de pagina web
+
+const btnHomeElement = document.querySelector(".btn__home");
+
+const funcionHome = (evento) => {
+  console.log("recarga de web");
+  evento.preventDefault();
+  location.reload();
+};
+
+btnHomeElement.addEventListener("click", funcionHome);
+
+export { addPuntos, render, nombreUsuario };
