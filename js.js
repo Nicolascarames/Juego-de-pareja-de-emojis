@@ -45,7 +45,7 @@ const GameFinished = () =>{
   if(finish === 8){
     TimerOnOff(false);
     document.querySelector(".modalgameover").style.display = "flex";
-    addPuntos(puntos);
+    addPuntos(puntos+extraPuntos-time);
     render();
   }
 }
