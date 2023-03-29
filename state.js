@@ -67,7 +67,8 @@ const funcionSubmit = (evento) => {
     alert("Nombre no valido");
   }
   // inputUsuarioElement.value = "";
-  inputUsuarioElement.setAttribute("readonly", "");
+  //se ha quitado el setattribute porqué no dejaba escribir despues de el alert
+  //inputUsuarioElement.setAttribute("readonly", "");
 };
 
 formPrincipalElement.addEventListener("submit", funcionSubmit);
