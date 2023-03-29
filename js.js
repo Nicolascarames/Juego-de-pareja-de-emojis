@@ -113,4 +113,10 @@ const ReStart = () => {
   document.querySelector(".modalgameover").style.display = "none";
 };
 
+//restart juego
+
+const btnRestartElement = document.querySelector(".btn__restart");
+
+btnRestartElement.addEventListener("click", ReStart);
+
 export { ReStart, Start, HandleClick, OpenCloseMod };
