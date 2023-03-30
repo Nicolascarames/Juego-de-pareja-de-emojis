@@ -1,5 +1,7 @@
 import { addPuntos, render, nombreUsuario } from "./state.js";
 
+//juego de pareja de emojis
+
 const caritas = [
   { id: "uno", imagen: "😄" },
   { id: "dos", imagen: "😅" },
