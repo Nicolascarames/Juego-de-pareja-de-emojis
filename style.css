@@ -21,7 +21,7 @@
   justify-content: center;
   align-items: center;
 }
-main{
+main {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -94,7 +94,6 @@ header article:nth-child(2) {
   border-radius: 5px;
   text-align: center;
   font-family: "Oswald", sans-serif;
-
 }
 
 .input__usuario:focus {
@@ -125,16 +124,18 @@ header article:nth-child(2) {
   color: white;
   font-family: "Oswald", sans-serif;
   border: 2px solid rgb(175, 115, 4);
+  border-radius: 5px;
   filter: brightness(80%);
   transition: all 1s;
 }
-.btnred{
+.btnred {
   width: 140px;
   height: 40px;
   background-color: rgb(206, 44, 44);
   color: white;
   font-family: "Oswald", sans-serif;
   border: 2px solid rgb(8, 8, 8);
+  border-radius: 5px;
   filter: brightness(80%);
   transition: all 1s;
 }
@@ -155,16 +156,15 @@ header article:nth-child(2) {
   justify-content: center;
   align-items: center;
 }
-form{
- 
+.form__principal {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   height: 200px;
 }
-ul{
-  list-style:none;
+.ul__principal {
+  list-style: none;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -249,17 +249,43 @@ ul{
   list-style: none;
   height: 80%;
   width: 95%;
-  border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.106);
-}
-
-.ul__puntuaciones li:nth-child(odd) {
-  background-color: rgba(0, 0, 0, 0.053);
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.284);
+  overflow: hidden;
+  overflow-y: scroll;
+  padding: 0.5rem;
 }
 
 .ul__puntuaciones li {
-  display: flex;
-  justify-content: space-between;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  justify-items: end;
+  border-radius: 20px;
+  padding: 0 1rem;
+  font-size: 1.2rem;
+}
+
+.ul__puntuaciones li:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.094);
+}
+
+.ul__puntuaciones li:first-child {
+  background-color: rgba(241, 153, 0, 0.301);
+  font-size: 1.2rem;
+}
+
+.ul__puntuaciones li span:first-child {
+  justify-self: start;
+}
+
+.ul__puntuaciones li h6 {
+  justify-self: start;
+  font-size: 1.3rem;
+}
+
+.ul__puntuaciones li.li__partida {
+  background-color: rgba(47, 255, 141, 0.38);
 }
 
 /* estilos para los li creados de puntuaciones */

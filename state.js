@@ -1,6 +1,13 @@
 "use strict";
 
-import { ReStart, Start, HandleClick, OpenCloseMod } from "./js.js";
+import {
+  ReStart,
+  Start,
+  HandleClick,
+  OpenCloseMod,
+  time,
+  intentos,
+} from "./js.js";
 
 const localStorageState = window.localStorage.getItem("storage");
 
@@ -18,22 +25,59 @@ const ulPuntuacionesElement = document.querySelector(".ul__puntuaciones");
 
 const render = () => {
   const fragmentUsuarios = document.createDocumentFragment();
-  for (const usuario of state.usuarios) {
-    const liElement = document.createElement("li");
-    const h7Element = document.createElement("h7");
-    const span1Element = document.createElement("span");
 
-    liElement.append(h7Element);
+  const ordenado = state.usuarios.sort((a, b) => {
+    return a.puntuacion - b.puntuacion;
+  });
+
+  for (const usuario of ordenado) {
+    const liElement = document.createElement("li");
+    const h6Element = document.createElement("h6");
+    const span1Element = document.createElement("span");
+    const span2Element = document.createElement("span");
+    const span3Element = document.createElement("span");
+
+    liElement.append(h6Element);
+    liElement.append(span2Element);
+    liElement.append(span3Element);
     liElement.append(span1Element);
 
-    h7Element.textContent = usuario.nombre;
+    h6Element.textContent = usuario.nombre.toUpperCase();
+    if (h6Element.textContent === nombreUsuario.toUpperCase()) {
+      h6Element.parentElement.classList.add("li__partida");
+    }
+
     span1Element.textContent = usuario.puntuacion;
+    span2Element.textContent = usuario.intentos;
+
+    const minuto = parseInt(usuario.tiempo / 60);
+    const segundos =
+      usuario.tiempo % 60 < 10
+        ? "0" + (usuario.tiempo % 60)
+        : usuario.tiempo % 60;
+    const minutos = `${minuto}:${segundos}`;
+    span3Element.textContent = minutos;
 
     fragmentUsuarios.prepend(liElement);
   }
   //limpio tabla puntuaciones
   ulPuntuacionesElement.innerHTML = "";
+  //añado titulo a los li
+  const liTituloElement = document.createElement("li");
+  const h6TituloElement = document.createElement("span");
+  const span1TituloElement = document.createElement("span");
+  const span2TituloElement = document.createElement("span");
+  const span3TituloElement = document.createElement("span");
+  h6TituloElement.textContent = "Nombre";
+  span1TituloElement.textContent = "Intentos";
+  span2TituloElement.textContent = "Tiempo";
+  span3TituloElement.textContent = "Puntos";
+  liTituloElement.append(h6TituloElement);
+  liTituloElement.append(span1TituloElement);
+  liTituloElement.append(span2TituloElement);
+  liTituloElement.append(span3TituloElement);
   //añado todos los usuarios al ul
+  ulPuntuacionesElement.append(liTituloElement);
   ulPuntuacionesElement.append(fragmentUsuarios);
 };
 
@@ -79,16 +123,12 @@ const addPuntos = (puntosUsuario) => {
   const datoUsuario = {
     nombre: nombreUsuario,
     puntuacion: puntosUsuario,
+    intentos: intentos,
+    tiempo: time,
   };
   state.usuarios.push(datoUsuario);
   saveState();
 };
-
-// const funcionUltima = (evento) => {
-//   evento.preventDefault();
-//   addPuntos(puntosUsuario);
-//   render();
-// };
 
 //recarga de pagina web
 
@@ -101,5 +141,7 @@ const funcionHome = (evento) => {
 };
 
 btnHomeElement.addEventListener("click", funcionHome);
+
+console.log(state.usuarios);
 
 export { addPuntos, render, nombreUsuario };
