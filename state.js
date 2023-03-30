@@ -16,6 +16,10 @@ const state = {
   dark: localStorageState ? JSON.parse(localStorageState).dark : false,
 };
 
+for (const usuario of state.usuarios) {
+  usuario.ultima = false;
+}
+
 const saveState = () => {
   const jsonState = JSON.stringify(state);
   window.localStorage.setItem("storage", jsonState);
@@ -46,6 +50,16 @@ const render = () => {
     if (h6Element.textContent === nombreUsuario.toUpperCase()) {
       h6Element.parentElement.classList.add("li__partida");
     }
+
+    console.log(state.usuarios);
+    console.log(usuario.ultima);
+
+    if (usuario.ultima) {
+      liElement.classList.add("li__ultima");
+    } else {
+      liElement.classList.remove("li__ultima");
+    }
+    usuario.ultima = false;
 
     span1Element.textContent = usuario.puntuacion;
     span2Element.textContent = usuario.intentos;
@@ -125,6 +139,7 @@ const addPuntos = (puntosUsuario) => {
     puntuacion: puntosUsuario,
     intentos: intentos,
     tiempo: time,
+    ultima: true,
   };
   state.usuarios.push(datoUsuario);
   saveState();
