@@ -16,6 +16,42 @@ const state = {
   dark: localStorageState ? JSON.parse(localStorageState).dark : false,
 };
 
+const ulPuntuacionesElement = document.querySelector(".ul__puntuaciones");
+// cambia el valor de dark tema
+const temaDarkElement = document.querySelector("#tema");
+const bodyDarkElement = document.querySelector(".bodydark");
+const gameOverDarkElement = document.querySelector(".overdark");
+const modalDarkElement = document.querySelector(".modaldark");
+const articleDarkElement = document.querySelector(".articledark");
+const pDarkElement = document.querySelector(".pdark");
+
+const toggleThemeDark = () => {
+  state.dark = !state.dark;
+  saveState();
+};
+
+temaDarkElement.addEventListener("click", (e) => {
+  e.stopPropagation();
+  ulPuntuacionesElement.classList.toggle("darkTema");
+  temaDarkElement.classList.toggle("darkTema");
+  bodyDarkElement.classList.toggle("darkTema");
+  gameOverDarkElement.classList.toggle("darkTema");
+  modalDarkElement.classList.toggle("darkTema");
+  articleDarkElement.classList.toggle("darkTema");
+  pDarkElement.classList.toggle("darkTema");
+  toggleThemeDark();
+});
+
+if (state.dark) {
+  ulPuntuacionesElement.classList.add("darkTema");
+  temaDarkElement.classList.add("darkTema");
+  bodyDarkElement.classList.add("darkTema");
+  gameOverDarkElement.classList.add("darkTema");
+  modalDarkElement.classList.add("darkTema");
+  articleDarkElement.classList.add("darkTema");
+  pDarkElement.classList.add("darkTema");
+}
+
 for (const usuario of state.usuarios) {
   usuario.ultima = false;
 }
@@ -24,8 +60,6 @@ const saveState = () => {
   const jsonState = JSON.stringify(state);
   window.localStorage.setItem("storage", jsonState);
 };
-
-const ulPuntuacionesElement = document.querySelector(".ul__puntuaciones");
 
 const render = () => {
   const fragmentUsuarios = document.createDocumentFragment();
@@ -159,4 +193,4 @@ btnHomeElement.addEventListener("click", funcionHome);
 
 console.log(state.usuarios);
 
-export { addPuntos, render, nombreUsuario };
+export { addPuntos, render, nombreUsuario, state };

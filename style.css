@@ -122,6 +122,7 @@ header article:nth-child(2) {
   border-radius: 10px;
 }
 .btnyellow {
+  cursor: pointer;
   width: 140px;
   height: 40px;
   background-color: rgb(252, 182, 53);
@@ -133,6 +134,7 @@ header article:nth-child(2) {
   transition: all 1s;
 }
 .btnred {
+  cursor: pointer;
   width: 140px;
   height: 40px;
   background-color: rgb(206, 44, 44);
@@ -191,10 +193,11 @@ header article:nth-child(2) {
   user-select: none;
   opacity: 1;
 }
-.card:hover {
+/* desactivo hover para pantallas pequeñas */
+/* .card:hover {
   transform: scale(1) rotateY(180deg) translateZ(-50px);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 75px;
-}
+} */
 .card p {
   width: 40px;
   height: 40px;
@@ -301,6 +304,59 @@ header article:nth-child(2) {
 
 /* estilos para los li creados de puntuaciones */
 
+/* tema dark */
+div.tema {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-image: url("./media/waningbibbousmoon-svgrepo-com.svg");
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+}
+
+div.modal div.darkTema {
+  background-image: url("./media/waningcrescentmoon-svgrepo-com.svg");
+}
+
+#body.darkTema {
+  background-color: #333533;
+}
+
+#body .modaldark.darkTema {
+  background-color: #333533;
+}
+
+#body .overdark.darkTema {
+  background-color: #333533;
+}
+
+#body .container .darkTema {
+  background-image: url("./media/cartabuenanoche.png");
+  background-size: 250%;
+  border: 3px solid black;
+}
+
+#body .container .darkTema .front {
+  background-color: #646864;
+  border-color: black;
+}
+
+ul.darkTema {
+  background-color: #646864;
+}
+
+.articledark.darkTema {
+  color: #cfdbd5;
+}
+
+.fxcntcnt.darkTema {
+  color: #cfdbd5;
+}
+
 @media only screen and (max-width: 600px) {
   .card {
     width: 80px;
@@ -318,5 +374,12 @@ header article:nth-child(2) {
   }
   .front {
     font-size: 40px;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .card:hover {
+    transform: scale(1) rotateY(180deg) translateZ(-50px);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 75px;
   }
 }

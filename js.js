@@ -1,4 +1,4 @@
-import { addPuntos, render, nombreUsuario } from "./state.js";
+import { addPuntos, render, nombreUsuario, state } from "./state.js";
 
 //juego de pareja de emojis
 
@@ -126,7 +126,10 @@ const Start = () => {
     const Front = document.createElement("div");
     Front.className = "front";
     Front.textContent = copia[random].imagen;
-    Card.className = "card";
+    Card.classList.add("card");
+    if (state.dark) {
+      Card.classList.add("darkTema");
+    }
     Card.id = copia[random].id;
     Card.append(Front);
 
