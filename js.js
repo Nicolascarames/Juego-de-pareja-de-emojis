@@ -82,16 +82,24 @@ const TimerOnOff = (boolean) => {
   }
 };
 const GameFinished = () => {
-  if (finish === 8) {
+  if (finish === 8 && !input30cardsElement.checked) {
+    TimerOnOff(false);
+    document.querySelector(".modalgameover").style.display = "flex";
+    addPuntos(puntos + extraPuntos - time);
+    render();
+  }
+  if (finish === 16) {
     TimerOnOff(false);
     document.querySelector(".modalgameover").style.display = "flex";
     addPuntos(puntos + extraPuntos - time);
     render();
   }
 };
+
 const OpenCloseMod = () => {
   document.querySelector(".modal").style.display = "none";
 };
+
 const HandleClick = (e) => {
   cont++;
 
@@ -169,9 +177,9 @@ const Start = () => {
     vecesFor = 32;
   }
 
-  console.log(input30cardsElement.checked);
-  console.log(window.innerWidth);
-  console.log(copia);
+  // console.log(input30cardsElement.checked);
+  // console.log(window.innerWidth);
+  // console.log(copia);
 
   for (let i = 0; i < vecesFor; i++) {
     const random = Math.floor(Math.random() * (copia.length - 0) + 0);
@@ -206,6 +214,7 @@ const ReStart = () => {
   document.querySelector(".container").textContent = "";
   intentos = 0;
   puntos = 0;
+  finish = 0;
   document.getElementById("intentos").textContent = `Intentos : ${intentos}/5`;
   document.getElementById("puntos").textContent = `Puntos : ${puntos}`;
   time = 0;

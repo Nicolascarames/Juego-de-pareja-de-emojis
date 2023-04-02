@@ -152,6 +152,19 @@ header article:nth-child(2) {
   filter: brightness(100%);
 }
 
+.btn__fallo {
+  position: absolute;
+  bottom: 2rem;
+  left: 1rem;
+  cursor: pointer;
+  width: 50px;
+  height: 30px;
+  background-color: rgba(255, 187, 0, 0.159);
+  padding: 2px;
+  text-align: center;
+  border-radius: 20%;
+}
+
 .container {
   margin: 10px 0;
   perspective: 600px;

@@ -182,6 +182,7 @@ const addPuntos = (puntosUsuario) => {
 //recarga de pagina web
 
 const btnHomeElement = document.querySelector(".btn__home");
+const btnFalloElement = document.querySelector(".btn__fallo");
 
 const funcionHome = (evento) => {
   console.log("recarga de web");
@@ -190,7 +191,8 @@ const funcionHome = (evento) => {
 };
 
 btnHomeElement.addEventListener("click", funcionHome);
+btnFalloElement.addEventListener("click", funcionHome);
 
-console.log(state.usuarios);
+// console.log(state.usuarios);
 
 export { addPuntos, render, nombreUsuario, state };
