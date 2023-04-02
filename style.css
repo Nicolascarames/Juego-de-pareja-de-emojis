@@ -151,6 +151,7 @@ header article:nth-child(2) {
 .btnred:hover {
   filter: brightness(100%);
 }
+
 .container {
   margin: 10px 0;
   perspective: 600px;
@@ -160,6 +161,14 @@ header article:nth-child(2) {
   gap: 0.5rem;
   align-items: center;
 }
+
+.container2 {
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 0.5rem;
+  align-items: center;
+}
+
 .form__principal {
   display: flex;
   flex-direction: column;
@@ -167,6 +176,11 @@ header article:nth-child(2) {
   align-items: center;
   height: 200px;
 }
+
+.treintaCards {
+  margin-right: 10px;
+}
+
 .ul__principal {
   list-style: none;
   height: 100%;
@@ -184,7 +198,7 @@ header article:nth-child(2) {
   transform-style: preserve-3d;
   background-color: whitesmoke;
   border-radius: 10px;
-  background-image: url("./media/cardframemod.png");
+  background-image: url("./media/carta\ definitiva.png");
   background-position: center;
   background-size: cover;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 35px;
@@ -193,6 +207,26 @@ header article:nth-child(2) {
   user-select: none;
   opacity: 1;
 }
+
+.card2 {
+  width: 60px;
+  height: 90px;
+  border: 1px solid rgb(105, 101, 101);
+  transform: rotateY(180deg);
+  transition: all 0.5s;
+  transform-style: preserve-3d;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  background-image: url("./media/carta\ definitiva.png");
+  background-position: center;
+  background-size: cover;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 35px;
+  /* margin: 5px; */
+  z-index: 100;
+  user-select: none;
+  opacity: 1;
+}
+
 /* desactivo hover para pantallas pequeñas */
 /* .card:hover {
   transform: scale(1) rotateY(180deg) translateZ(-50px);
@@ -221,7 +255,7 @@ header article:nth-child(2) {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 70px;
+  font-size: 55px;
   border-radius: 10px;
 }
 .modalgameover {
@@ -248,13 +282,14 @@ header article:nth-child(2) {
 
 .modalgameover fieldset {
   border: none;
+  margin-bottom: 1rem;
 }
 
 .ul__puntuaciones {
   list-style: none;
   height: 80%;
   width: 95%;
-  border-radius: 30px;
+  border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.284);
   overflow: hidden;
   overflow-y: scroll;
@@ -330,13 +365,17 @@ div.modal div.darkTema {
   background-color: #333533;
 }
 
+#body .modaldark.darkTema label {
+  color: #cfdbd5;
+}
+
 #body .overdark.darkTema {
   background-color: #333533;
 }
 
 #body .container .darkTema {
-  background-image: url("./media/cartabuenanoche.png");
-  background-size: 250%;
+  background-image: url("./media/carta\ definitiva.png");
+  background-size: cover;
   border: 3px solid black;
 }
 
@@ -381,5 +420,16 @@ ul.darkTema {
   .card:hover {
     transform: scale(1) rotateY(180deg) translateZ(-50px);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 75px;
+  }
+
+  .card,
+  .card2 {
+    width: 120px;
+    height: 180px;
+  }
+
+  .container2 {
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(5, 1fr);
   }
 }

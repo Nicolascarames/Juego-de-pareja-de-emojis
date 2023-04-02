@@ -20,6 +20,42 @@ const caritas = [
   { id: "diecisiete", imagen: "😫" },
   { id: "dieciocho", imagen: "🤬" },
 ];
+
+const caritas2 = [
+  { id: "uno", imagen: "😈" },
+  { id: "dos", imagen: "🤡" },
+  { id: "tres", imagen: "💩" },
+  { id: "cuatro", imagen: "👻" },
+  { id: "cinco", imagen: "🤢" },
+  // { id: "seis", imagen: "🥵" },
+  { id: "siete", imagen: "😎" },
+  { id: "ocho", imagen: "💣" },
+  { id: "nueve", imagen: "🧠" },
+  { id: "diez", imagen: "🙈" },
+  { id: "once", imagen: "🔥" },
+  { id: "doce", imagen: "🍍" },
+  { id: "trece", imagen: "😈" },
+  { id: "catorce", imagen: "🍕" },
+  { id: "quince", imagen: "🤡" },
+  { id: "dieciseis", imagen: "🍟" },
+  { id: "diecisiete", imagen: "🎧" },
+  { id: "dieciocho", imagen: "💻" },
+  { id: "diecinueve", imagen: "💩" },
+  { id: "veinte", imagen: "👻" },
+  { id: "veintiuno", imagen: "🤢" },
+  // { id: "veintidos", imagen: "🥵" },
+  { id: "veintitres", imagen: "😎" },
+  { id: "veinticuatro", imagen: "💣" },
+  { id: "veinticinco", imagen: "🧠" },
+  { id: "veintiseis", imagen: "🙈" },
+  { id: "veintisiete", imagen: "🔥" },
+  { id: "veintiocho", imagen: "🍍" },
+  { id: "veintinueve", imagen: "🍕" },
+  { id: "treinta", imagen: "🍟" },
+  { id: "treintauno", imagen: "🎧" },
+  { id: "treintados", imagen: "💻" },
+];
+
 let cont = 0;
 let first;
 let intentos = 0;
@@ -118,15 +154,36 @@ const HandleClick = (e) => {
   }
 };
 
+const input30cardsElement = document.querySelector("#treintaCards");
+const containerElement = document.querySelector(".container");
+
 const Start = () => {
-  const copia = [...caritas];
-  for (let i = 0; i < caritas.length; i++) {
+  let copia = input30cardsElement.checked ? [...caritas2] : [...caritas];
+  let vecesFor = input30cardsElement.checked ? 30 : 16;
+  if (input30cardsElement.checked) {
+    containerElement.classList.add("container2");
+  }
+  if (window.innerWidth >= 800 && input30cardsElement.checked) {
+    copia.push({ id: "seis", imagen: "🥵" });
+    copia.push({ id: "veintidos", imagen: "🥵" });
+    vecesFor = 32;
+  }
+
+  console.log(input30cardsElement.checked);
+  console.log(window.innerWidth);
+  console.log(copia);
+
+  for (let i = 0; i < vecesFor; i++) {
     const random = Math.floor(Math.random() * (copia.length - 0) + 0);
     const Card = document.createElement("div");
     const Front = document.createElement("div");
     Front.className = "front";
     Front.textContent = copia[random].imagen;
-    Card.classList.add("card");
+    if (input30cardsElement.checked) {
+      Card.classList.add("card2");
+    } else {
+      Card.classList.add("card");
+    }
     if (state.dark) {
       Card.classList.add("darkTema");
     }
@@ -143,6 +200,7 @@ const Start = () => {
     TimerOnOff(true);
   }, 2000);
 };
+
 const ReStart = () => {
   console.log("restart");
   document.querySelector(".container").textContent = "";
