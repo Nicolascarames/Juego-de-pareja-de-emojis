@@ -88,6 +88,12 @@ const GameFinished = () => {
     addPuntos(puntos + extraPuntos - time);
     render();
   }
+  if (window.innerWidth < 800 && finish === 15) {
+    TimerOnOff(false);
+    document.querySelector(".modalgameover").style.display = "flex";
+    addPuntos(puntos + extraPuntos - time);
+    render();
+  }
   if (finish === 16) {
     TimerOnOff(false);
     document.querySelector(".modalgameover").style.display = "flex";
