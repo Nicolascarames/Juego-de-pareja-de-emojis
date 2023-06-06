@@ -1,5 +1,6 @@
 "use strict";
 
+import { post, traer } from "./fetchPuntuaciones.js";
 import {
   ReStart,
   Start,
@@ -11,10 +12,16 @@ import {
 
 const localStorageState = window.localStorage.getItem("storage");
 
+const load = traer("http://localhost:3000/allScoresEmoji");
+console.log(load);
+
 const state = {
-  usuarios: localStorageState ? JSON.parse(localStorageState).usuarios : [],
+  // usuarios: localStorageState ? JSON.parse(localStorageState).usuarios : [],
+  usuarios: load() || JSON.parse(localStorageState).usuarios,
   dark: localStorageState ? JSON.parse(localStorageState).dark : false,
 };
+
+console.log(state.usuarios);
 
 const ulPuntuacionesElement = document.querySelector(".ul__puntuaciones");
 // cambia el valor de dark tema
@@ -80,13 +87,13 @@ const render = () => {
     liElement.append(span3Element);
     liElement.append(span1Element);
 
+    // console.log(state.usuarios);
+    // console.log(usuario);
+
     h6Element.textContent = usuario.nombre.toUpperCase();
     if (h6Element.textContent === nombreUsuario.toUpperCase()) {
       h6Element.parentElement.classList.add("li__partida");
     }
-
-    console.log(state.usuarios);
-    console.log(usuario.ultima);
 
     if (usuario.ultima) {
       liElement.classList.add("li__ultima");
@@ -177,6 +184,8 @@ const addPuntos = (puntosUsuario) => {
   };
   state.usuarios.push(datoUsuario);
   saveState();
+
+  post("http://localhost:3000/newpuntuacion", datoUsuario);
 };
 
 //recarga de pagina web
