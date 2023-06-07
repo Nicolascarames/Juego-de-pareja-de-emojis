@@ -12,7 +12,7 @@ import { post, traer } from "./fetchPuntuaciones.js";
 
 async function loader() {
   const localStorageState = window.localStorage.getItem("storage");
-  const load = await traer("http://localhost:3000/allScoresEmoji");
+  const load = await traer("https://api-1-navidad.onrender.com/allScoresEmoji");
 
   // console.log(load);
 
@@ -188,7 +188,7 @@ async function loader() {
     state.usuarios.data.push(datoUsuario);
     saveState();
 
-    post("http://localhost:3000/newpuntuacion", datoUsuario);
+    post("https://api-1-navidad.onrender.com/newpuntuacion", datoUsuario);
   };
 
   //recarga de pagina web
